@@ -53,8 +53,12 @@ index b36abfd..0848c8d 100644
 ~~~
 {: .output}
 
-* Is this any different from what we'd get with `git diff mars.txt`?
-* No it's the same as what you would get if you leave out HEAD (try it).
+* Is this any different from what we'd get with:
+~~~
+git diff mars.txt
+~~~
+
+* No it's the same as what you would get if you leave out `HEAD`
 * The **real goodness** in all this is when you can refer to previous commits.
 * We do that by adding ~1 (where “~” is “tilde”, pronounced [til-duh]) to refer to the commit one before HEAD.
 * If we want to see what we changed when, we use `git diff` again, but refer to old versions
@@ -93,7 +97,6 @@ index df0654a..b36abfd 100644
 ~~~
 
 * We could also use `git show`
-* This shows us what changes we made at an older commit as well as the commit message, rather than the differences between a commit and our working directory that we see by using git diff.
 
 ~~~
 git show HEAD~2 mars.txt
@@ -116,6 +119,9 @@ index 0000000..df0654a
 ~~~
 
 
+* This shows us what **changes** we made at an older commit as well as the commit message,
+* rather than the differences between a commit and our working directory that we see by using git diff.
+
 * In this way we build up a chain of revisions.
 * The most recent end of the chain is referred to as `HEAD`;
 * we can refer to previous revisions using the `~` notation,
@@ -123,8 +129,7 @@ index 0000000..df0654a
 * means "the previous revision",
 * while `HEAD~123` goes back 123 revisions from where we are now.
 
-* We can also refer to revisions using
-those long strings of digits and letters
+* We can also refer to revisions using those long strings of digits and letters
 that `git log` displays.
 * These are unique IDs for the changes, and "unique" really does mean unique:
 every change to any set of files on any machine
@@ -168,7 +173,7 @@ index df0654a..b36abfd 100644
 +But the Mummy will appreciate the lack of humidity
 ~~~
 
-**Useful git diff flags**
+**Useful git diff flags (add to etherpad)**
 
 * `git diff --stat` gives us a summary of the filename and number of insertions/deletions
 * `git diff -- filename` looks at the differences for a specific file
@@ -180,7 +185,6 @@ index df0654a..b36abfd 100644
 * Let's say you are wolfman do some good work and go to bed and find in the morning you fatally ruin a file during an editing mistake
 * Maybe you even accidentally delete an important file (This code is old, why should I keep it?).
 * If you have version control, you don't need to track down your System Administrator. You can fix your problem
-
 * Which leads us to **how** can we restore older versions of things?
 * Let's suppose we accidentally overwrite our file:
 
@@ -237,8 +241,20 @@ But the Mummy will appreciate the lack of humidity
 * we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved revision.
 
+~~~
+git status
+~~~
+
 **This would work even if we deleted our file, and wanted to get it back **
 **delete mars.txt, and then show that it can be checked back out**
+
+~~~
+rm mars.txt
+~~~
+
+~~~
+git checkout HEAD mars.txt
+~~~
 
 * If we want to go back even further,
 we can use a revision identifier instead:
