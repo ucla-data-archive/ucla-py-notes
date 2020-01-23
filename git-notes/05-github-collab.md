@@ -1,6 +1,6 @@
 ## Github
 
-<https://github.com/ucla-data-archive/ucla-py-notes/blob/master/git-notes/05-github-collab.md>
+<https://github.com/ucla-data-archive/ucla-py-notes/>
 <http://swcarpentry.github.io/git-novice/07-github/index.html>
 
 * create a repo for planets
